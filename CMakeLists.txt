@@ -14,11 +14,15 @@ add_subdirectory(libcuckoo)
 # Add C interface target
 add_subdirectory(libcuckoo-c)
 
-# Build examples
-if(BUILD_EXAMPLES)
-  add_subdirectory(examples)
-endif()
+# Only do these if this is the main project, and not if it is included through add_subdirectory
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
-# Build tests -- this only builds tests that were specified
-enable_testing()
-add_subdirectory(tests)
+  # Build examples
+  if(BUILD_EXAMPLES)
+    add_subdirectory(examples)
+  endif()
+
+  # Build tests -- this only builds tests that were specified
+  enable_testing()
+  add_subdirectory(tests)
+endif()

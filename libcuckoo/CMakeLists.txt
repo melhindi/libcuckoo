@@ -11,6 +11,8 @@ set (libcuckoo_VERSION "${libcuckoo_VERSION}.${libcuckoo_VERSION_PATCH}")
 
 # libcuckoo is an interface (all headers) library target
 add_library(libcuckoo INTERFACE)
+# Add an alias so that library can be used inside the build tree, e.g. when testing
+add_library(libcuckoo::libcuckoo ALIAS libcuckoo)
 
 # tag libcuckoo target with a c++11 feature so that libcuckoo users
 # will have c++11 turned on in their compile when they use this target.
@@ -27,25 +29,25 @@ target_include_directories(libcuckoo INTERFACE
 target_link_libraries(libcuckoo INTERFACE Threads::Threads)
 
 # cmake packaging
-set (libcuckoo_pkgloc "share/cmake/libcuckoo")
+# set (libcuckoo_pkgloc "share/cmake/libcuckoo")
 
-write_basic_package_version_file(
-    "libcuckoo-config-version.cmake" VERSION ${libcuckoo_VERSION}
-    COMPATIBILITY AnyNewerVersion)
+# write_basic_package_version_file(
+#     "libcuckoo-config-version.cmake" VERSION ${libcuckoo_VERSION}
+#     COMPATIBILITY AnyNewerVersion)
 
-install(TARGETS libcuckoo EXPORT libcuckoo-targets)
-install(EXPORT libcuckoo-targets
-        DESTINATION ${libcuckoo_pkgloc}
-        FILE "libcuckoo-targets.cmake")
-install(FILES libcuckoo-config.cmake
-              ${CMAKE_CURRENT_BINARY_DIR}/libcuckoo-config-version.cmake
-              DESTINATION ${libcuckoo_pkgloc})
-install(
-FILES
-    cuckoohash_config.hh
-    cuckoohash_map.hh
-    cuckoohash_util.hh
-    bucket_container.hh
-DESTINATION
-    ${CMAKE_INSTALL_PREFIX}/include/libcuckoo
-)
+# install(TARGETS libcuckoo EXPORT libcuckoo-targets)
+# install(EXPORT libcuckoo-targets
+#         DESTINATION ${libcuckoo_pkgloc}
+#         FILE "libcuckoo-targets.cmake")
+# install(FILES libcuckoo-config.cmake
+#               ${CMAKE_CURRENT_BINARY_DIR}/libcuckoo-config-version.cmake
+#               DESTINATION ${libcuckoo_pkgloc})
+# install(
+# FILES
+#     cuckoohash_config.hh
+#     cuckoohash_map.hh
+#     cuckoohash_util.hh
+#     bucket_container.hh
+# DESTINATION
+#     ${CMAKE_INSTALL_PREFIX}/include/libcuckoo
+# )
