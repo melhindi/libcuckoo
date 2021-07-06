@@ -21,7 +21,7 @@ target_compile_features (libcuckoo INTERFACE cxx_constexpr)
 
 # Include relative to the base directory
 target_include_directories(libcuckoo INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo>
     $<INSTALL_INTERFACE:include>
 )
 
@@ -39,15 +39,15 @@ install(TARGETS libcuckoo EXPORT libcuckoo-targets)
 install(EXPORT libcuckoo-targets
         DESTINATION ${libcuckoo_pkgloc}
         FILE "libcuckoo-targets.cmake")
-install(FILES libcuckoo-config.cmake
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libcuckoo-config.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/libcuckoo-config-version.cmake
               DESTINATION ${libcuckoo_pkgloc})
 install(
 FILES
-    cuckoohash_config.hh
-    cuckoohash_map.hh
-    cuckoohash_util.hh
-    bucket_container.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_config.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_map.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_util.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/bucket_container.hh
 DESTINATION
     ${CMAKE_INSTALL_PREFIX}/include/libcuckoo
 )
