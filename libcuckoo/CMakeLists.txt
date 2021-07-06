@@ -22,7 +22,7 @@ target_compile_features (libcuckoo INTERFACE cxx_constexpr)
 # Include relative to the base directory
 target_include_directories(libcuckoo INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<INSTALL_INTERFACE:include>
+    $<INSTALL_INTERFACE:include/libcuckoo>
 )
 
 # switch on threading for all targets that link with libcuckoo
