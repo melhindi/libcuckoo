@@ -28,26 +28,26 @@ target_include_directories(libcuckoo INTERFACE
 # switch on threading for all targets that link with libcuckoo
 target_link_libraries(libcuckoo INTERFACE Threads::Threads)
 
-# cmake packaging
-set (libcuckoo_pkgloc "share/cmake/libcuckoo")
+# # cmake packaging
+# set (libcuckoo_pkgloc "share/cmake/libcuckoo")
 
-write_basic_package_version_file(
-    "libcuckoo-config-version.cmake" VERSION ${libcuckoo_VERSION}
-    COMPATIBILITY AnyNewerVersion)
+# write_basic_package_version_file(
+#     "libcuckoo-config-version.cmake" VERSION ${libcuckoo_VERSION}
+#     COMPATIBILITY AnyNewerVersion)
 
-install(TARGETS libcuckoo EXPORT libcuckoo-targets)
-install(EXPORT libcuckoo-targets
-        DESTINATION ${libcuckoo_pkgloc}
-        FILE "libcuckoo-targets.cmake")
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libcuckoo-config.cmake
-              ${CMAKE_CURRENT_BINARY_DIR}/libcuckoo-config-version.cmake
-              DESTINATION ${libcuckoo_pkgloc})
-install(
-FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_config.hh
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_map.hh
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_util.hh
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/bucket_container.hh
-DESTINATION
-    ${CMAKE_INSTALL_PREFIX}/include/libcuckoo
-)
+# install(TARGETS libcuckoo EXPORT libcuckoo-targets)
+# install(EXPORT libcuckoo-targets
+#         DESTINATION ${libcuckoo_pkgloc}
+#         FILE "libcuckoo-targets.cmake")
+# install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libcuckoo-config.cmake
+#               ${CMAKE_CURRENT_BINARY_DIR}/libcuckoo-config-version.cmake
+#               DESTINATION ${libcuckoo_pkgloc})
+# install(
+# FILES
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_config.hh
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_map.hh
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/cuckoohash_util.hh
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include/libcuckoo/bucket_container.hh
+# DESTINATION
+#     ${CMAKE_INSTALL_PREFIX}/include/libcuckoo
+# )
