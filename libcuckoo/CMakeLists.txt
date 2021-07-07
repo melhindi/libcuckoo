@@ -10,7 +10,12 @@ set (libcuckoo_VERSION "${libcuckoo_VERSION_MAJOR}.${libcuckoo_VERSION_MINOR}")
 set (libcuckoo_VERSION "${libcuckoo_VERSION}.${libcuckoo_VERSION_PATCH}")
 
 # libcuckoo is an interface (all headers) library target
-add_library(libcuckoo INTERFACE)
+add_library(libcuckoo INTERFACE 
+bucket_container.hh
+cuckoohash_config.hh
+cuckoohash_map.hh
+cuckoohash_util.hh
+)
 # Add an alias so that library can be used inside the build tree, e.g. when testing
 add_library(libcuckoo::libcuckoo ALIAS libcuckoo)
 
